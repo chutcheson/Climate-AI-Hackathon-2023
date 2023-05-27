@@ -13,6 +13,8 @@ def query_summarized_documents(text, n_results):
     res = []
     docs = query_document(text, n_results)
     for idx, doc in docs:
+        print("Citiation: ", idx)
+        print("Document: ", doc)
         res.append({ "citation" : idx, "document" : summarize_document(doc)})
     return res
 
