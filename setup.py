@@ -10,6 +10,9 @@ setup(
     install_requires=[
         'langchain',
         'marvin',
+        'openai',
+        'pandas',
+        'chromadb'
     ],
 )
 
