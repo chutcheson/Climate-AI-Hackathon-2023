@@ -24,6 +24,7 @@ def create_collection():
             persist_directory=str(persistent_directory)
         ))
         chroma_client.delete_collection(name="organic_data")
+        print("here")
     except Exception as e:
         print(e)
         pass
