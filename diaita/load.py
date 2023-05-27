@@ -6,6 +6,8 @@ import pandas as pd
 from chromadb.config import Settings
 import chromadb
 
+from docs import summarize_document
+
 def create_collection():
 
     # Expand the tilde (~) to the user's home directory
@@ -54,18 +56,39 @@ def create_collection():
             # Save the organic data in the loop
             ids.append(citation)
             documents.append(content_1)
-            metadatas.append({ "citation" : citation })
+            metadatas.append({ "citation" : citation, "kind" : "regulation"})
 
             ids.append(citation)
             documents.append(content_2)
-            metadatas.append({ "citation" : citation })
+            metadatas.append({ "citation" : citation, "kind" : "regulation"})
+
+            # Perform AI summarization
+            summary_1 = summarize_document(content_1)
+            summary_2 = summarize_document(content_2)
+
+            # Save the summarized organic data in the loop
+            ids.append(f"{citation}_summary")
+            documents.append(summary_1)
+            metadatas.append({"citation" : citation, "kind" : "summary"})
+
+            ids.append(f"{citation}_summary")
+            documents.append(summary_2)
+            metadatas.append({"citation" : citation, "kind" : "summary"})
 
         else:
 
             # Save the organic data in the loop
             ids.append(citation)
             documents.append(content)
-            metadatas.append({ "citation" : citation })
+            metadatas.append({ "citation" : citation, "kind" : "regulation"})
+
+            # Perform AI summarization
+            summary = summarize_document(content)
+
+            # Save the summarized organic data in the loop
+            ids.append(f"{citation}_summary")
+            documents.append(summary)
+            metadatas.append({"citation" : citation, "kind" : "summary"})
 
     # Add the organic data to the collection
     organic_collection.add(
