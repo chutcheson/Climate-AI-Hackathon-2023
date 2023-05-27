@@ -25,10 +25,6 @@ def create_collection():
         persist_directory=str(persistent_directory)
     ))
 
-    chroma_client.delete_collection(name="organic_data")
-
-    chroma_client.persist()
-
     # Create collection to store organic data 
     organic_collection = chroma_client.create_collection(name="organic_data")
 
