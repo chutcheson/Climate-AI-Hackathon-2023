@@ -15,10 +15,11 @@ def query_summarized_documents(text, n_results):
     for idx, doc in docs:
         print("Citiation: ", idx)
         print("Document: ", doc)
+	print(len(doc))
         res.append({ "citation" : idx, "document" : summarize_document(doc)})
     return res
 
-@ai_fn(max_tokens=1000)
+@ai_fn
 def summarize_document(document: str) -> str:
     """
     You are an expert in USDA organic regulation. You are asked to summarize the requirements for a USDA organic auditor.
