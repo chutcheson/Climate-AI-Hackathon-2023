@@ -56,7 +56,7 @@ def load_collection():
     persistent_directory = os.path.expanduser("~/.diaita_data")
 
     # Create a Chroma client to store organic documents
-    client = chromadb.Client(Settings(
+    chroma_client = chromadb.Client(Settings(
         chroma_db_impl="duckdb+parquet",
         persist_directory=str(persistent_directory)
     ))
