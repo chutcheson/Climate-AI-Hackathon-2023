@@ -6,6 +6,6 @@ def query_documents(text, kind, n_results):
     collection = load_collection()
     res = collection.query(query_texts=[text], where={"kind":kind}, n_results=n_results)
     print(res)
-    metadata = res['metadata'][0]
+    metadata = res['metadatas'][0]
     docs = res['documents'][0]
     return [(datum['citation'], doc) for datum, doc in zip(metadata, docs)]
