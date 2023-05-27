@@ -23,6 +23,10 @@ def create_collection():
         persist_directory=str(persistent_directory)
     ))
 
+    chroma_client.delete_collection(name="organic_data")
+
+    chroma_client.persist()
+
     # Create collection to store organic data 
     organic_collection = chroma_client.create_collection(name="organic_data")
 
@@ -38,10 +42,30 @@ def create_collection():
         citation = record['citation']
         content = record['content']
 
-        # Save the organic data in the loop
-        ids.append(citation)
-        documents.append(content)
-        metadatas.append({ "citation" : citation })
+        # Find token length of the content
+        content_length = len(content.split()) * 1.33
+
+        # If the content length is > 1500, split it into two halves
+        if content_length > 1500:
+
+            content_1 = " ".join(content.split()[:int(content_length/2)])
+            content_2 = " ".join(content.split()[int(content_length/2):])
+
+            # Save the organic data in the loop
+            ids.append(citation)
+            documents.append(content_1)
+            metadatas.append({ "citation" : citation })
+
+            ids.append(citation)
+            documents.append(content_2)
+            metadatas.append({ "citation" : citation })
+
+        else:
+
+            # Save the organic data in the loop
+            ids.append(citation)
+            documents.append(content)
+            metadatas.append({ "citation" : citation })
 
     # Add the organic data to the collection
     organic_collection.add(
