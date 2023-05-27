@@ -9,7 +9,7 @@ import chromadb
 def create_collection():
 
     # Expand the tilde (~) to the user's home directory
-    persistent_directory = os.path.expanduser("~/.diaita_data/")
+    persistent_directory = os.path.expanduser("~/.diaita_data")
 
     # Expand the tilde (~) to the user's home directory
     data_file = os.path.expanduser("~/Projects/Climate-AI-Hackathon-2023/data/organic_data.csv")
@@ -53,7 +53,7 @@ def create_collection():
 def load_collection():
 
     # Expand the tilde (~) to the user's home directory
-    persistent_directory = os.path.expanduser("~/.diaita_data/")
+    persistent_directory = os.path.expanduser("~/.diaita_data")
 
     # Create a Chroma client to store organic documents
     client = chromadb.Client(Settings(
