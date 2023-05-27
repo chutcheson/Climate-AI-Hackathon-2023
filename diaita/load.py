@@ -25,6 +25,8 @@ def create_collection():
 
     chroma_client.delete_collection(name="organic_data")
 
+    chroma_client.persist()
+
     # Create collection to store organic data 
     organic_collection = chroma_client.create_collection(name="organic_data")
 
@@ -51,6 +53,9 @@ def create_collection():
         metadatas=metadatas,
         ids=ids
     )
+
+    # Persist the collection to disk
+    chroma_client.persist()
 
 def load_collection():
 
