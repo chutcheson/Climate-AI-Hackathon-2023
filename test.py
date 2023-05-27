@@ -1,4 +1,5 @@
 from marvin import ai_model
+from marvin import ai_fn
 from pydantic import BaseModel
 
 @ai_model
@@ -9,4 +10,10 @@ class Location(BaseModel):
     lat: float
     lon: float
 
-print(Location("The windy city"))
+@ai_fn
+def list_fruits(n: int) -> list[str]:
+    """Generate a list of n fruits"""
+
+
+print(list_fruits(n=3)) # ["apple", "banana", "orange"]
+
