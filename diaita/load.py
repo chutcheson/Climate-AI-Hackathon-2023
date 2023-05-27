@@ -17,18 +17,13 @@ def create_collection():
     # Load the materials into a Pandas dataframe
     organic_df = pd.read_csv(data_file)
 
-    # Delete collection if it exists
-    chroma_client = chromadb.Client(Settings(
-        chroma_db_impl="duckdb+parquet",
-        persist_directory=str(persistent_directory)
-    ))
-    print(chroma_client.delete_collection(name="organic_data"))
-
     # Create a Chroma client to store organic documents
     chroma_client = chromadb.Client(Settings(
         chroma_db_impl="duckdb+parquet",
         persist_directory=str(persistent_directory)
     ))
+
+    chroma_client.delete_collection(name="organic_data")
 
     # Create collection to store organic data 
     organic_collection = chroma_client.create_collection(name="organic_data")
