@@ -17,6 +17,13 @@ def create_collection():
     # Load the materials into a Pandas dataframe
     organic_df = pd.read_csv(data_file)
 
+    # Delete collection if it exists
+    try:
+        client = chromadb.Client()
+        client.delete_collection(name="organic_data")
+    except:
+        pass
+
     # Create a Chroma client to store organic documents
     chroma_client = chromadb.Client(Settings(
         chroma_db_impl="duckdb+parquet",
@@ -55,15 +62,11 @@ def load_collection():
     # Expand the tilde (~) to the user's home directory
     persistent_directory = os.path.expanduser("~/.diaita_data")
 
-    # Create a Chroma client to store organic documents
-    chroma_client = chromadb.Client(Settings(
-        chroma_db_impl="duckdb+parquet",
-        persist_directory=str(persistent_directory)
-    ))
+    # Create a chromadb client to access the collections
+    chroma_client = chromadb.Client()
 
     # Create collection to store evidence
     organic_collection = chroma_client.get_collection(name="organic_data")
 
     return organic_collection
-
 
