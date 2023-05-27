@@ -47,33 +47,24 @@ def create_collection():
         # Find token length of the content
         content_length = len(content.split()) * 1.33
 
-        # If the content length is > 1500, split it into two halves
+        # If the content length is > 1500, split it into chunks of 1500
         if content_length > 1500:
 
-            content_1 = " ".join(content.split()[:int(content_length/2)])
-            content_2 = " ".join(content.split()[int(content_length/2):])
+            # Split the content into the necessary chunks
+            for i in range(int(content_length/1500)):
 
-            # Save the organic data in the loop
-            ids.append(citation)
-            documents.append(content_1)
-            metadatas.append({ "citation" : citation, "kind" : "regulation"})
+                # Save the organic data in the loop
+                ids.append(f"{citation}_{i}")
+                documents.append(" ".join(content.split()[i*1500:(i+1)*1500]))
+                metadatas.append({ "citation" : citation, "kind" : "regulation"})
 
-            ids.append(citation)
-            documents.append(content_2)
-            metadatas.append({ "citation" : citation, "kind" : "regulation"})
+                # Perform AI summarization
+                summary = summarize_document(" ".join(content.split()[i*1500:(i+1)*1500]))
 
-            # Perform AI summarization
-            summary_1 = summarize_document(content_1)
-            summary_2 = summarize_document(content_2)
-
-            # Save the summarized organic data in the loop
-            ids.append(f"{citation}_summary")
-            documents.append(summary_1)
-            metadatas.append({"citation" : citation, "kind" : "summary"})
-
-            ids.append(f"{citation}_summary")
-            documents.append(summary_2)
-            metadatas.append({"citation" : citation, "kind" : "summary"})
+                # Save the summarized organic data in the loop
+                ids.append(f"{citation}_summary_{i}")
+                documents.append(summary)
+                metadatas.append({"citation" : citation, "kind" : "summary"})
 
         else:
 
