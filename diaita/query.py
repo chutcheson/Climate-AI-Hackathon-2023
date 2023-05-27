@@ -5,7 +5,7 @@ from marvin import ai_fn
 from diaita.docs import query_summarized_documents
 
 def query(query, kind):
-    docs = query_summarized_documents(query)
+    docs = query_summarized_documents(query, n_results=5)
     if kind == "auditor":
         return query_auditor(query, docs)
     elif kind == "farmer":
