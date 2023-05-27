@@ -20,7 +20,7 @@ def create_collection():
     # Create a Chroma client to store organic documents
     chroma_client = chromadb.Client(Settings(
         chroma_db_impl="duckdb+parquet",
-        persist_directory=persistent_directory
+        persist_directory=str(persistent_directory)
     ))
 
     # Create collection to store organic data 
@@ -58,7 +58,7 @@ def load_collection():
     # Create a Chroma client to store organic documents
     client = chromadb.Client(Settings(
         chroma_db_impl="duckdb+parquet",
-        persist_directory=persistent_directory
+        persist_directory=str(persistent_directory)
     ))
 
     # Create collection to store evidence
