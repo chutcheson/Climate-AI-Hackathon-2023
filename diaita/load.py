@@ -21,7 +21,8 @@ def create_collection():
     try:
         client = chromadb.Client()
         client.delete_collection(name="organic_data")
-    except:
+    except Exception as e:
+        print(e)
         pass
 
     # Create a Chroma client to store organic documents
