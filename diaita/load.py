@@ -67,7 +67,10 @@ def load_collection():
     persistent_directory = os.path.expanduser("~/.diaita_data")
 
     # Create a chromadb client to access the collections
-    chroma_client = chromadb.Client()
+    chroma_client = chromadb.Client(Settings(
+        chroma_db_impl="duckdb+parquet",
+        persist_directory=str(persistent_directory)
+    ))
 
     # Create collection to store evidence
     organic_collection = chroma_client.get_collection(name="organic_data")
