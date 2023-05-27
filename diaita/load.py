@@ -23,7 +23,7 @@ def create_collection():
             chroma_db_impl="duckdb+parquet",
             persist_directory=str(persistent_directory)
         ))
-        chroma_client.delete_collection(name="organic_data")
+        print(chroma_client.delete_collection(name="organic_data"))
         print("here")
     except Exception as e:
         print(e)
