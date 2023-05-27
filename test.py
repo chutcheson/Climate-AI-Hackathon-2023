@@ -1,4 +1,4 @@
-from marvin import ai_fn
+from marvin import ai_model
 from pydantic import BaseModel
 
 @ai_model
