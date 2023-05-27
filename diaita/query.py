@@ -2,10 +2,10 @@ from typing import Dict, List
 
 from marvin import ai_fn
 
-from diaita.docs import query_summarized_docs
+from diaita.docs import query_summarized_documents
 
 def query(query, kind):
-    docs = query_summarized_docs(query)
+    docs = query_summarized_documents(query)
     if kind == "auditor":
         return query_auditor(query, docs)
     elif kind == "farmer":
