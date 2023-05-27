@@ -6,7 +6,7 @@ import pandas as pd
 from chromadb.config import Settings
 import chromadb
 
-from docs import summarize_document
+from marvin import ai_fn
 
 def create_collection():
 
@@ -100,6 +100,24 @@ def create_collection():
     # Persist the collection to disk
     chroma_client.persist()
 
+@ai_fn
+def summarize_document(document: str) -> str:
+    """
+    You are an expert in USDA organic regulation. You are asked to summarize the requirements for a USDA organic auditor.
+
+    Take the document, containing the regulation, and summarize it in bullet points that can be used by the auditor.
+
+    The bullet points should be ordered by relevance.
+
+    The bullet points should be terse and should omit unnecessary words.
+
+    The bullet points should be complete and include all regulatory requirements.
+
+    The bullet points should be easy to read.
+
+    The bullet points should contain relevant citations.
+    """
+
 def load_collection():
 
     # Expand the tilde (~) to the user's home directory
@@ -115,4 +133,5 @@ def load_collection():
     organic_collection = chroma_client.get_collection(name="organic_data")
 
     return organic_collection
+
 
