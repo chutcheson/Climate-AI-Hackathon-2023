@@ -19,7 +19,10 @@ def create_collection():
 
     # Delete collection if it exists
     try:
-        client = chromadb.Client()
+        chroma_client = chromadb.Client(Settings(
+            chroma_db_impl="duckdb+parquet",
+            persist_directory=str(persistent_directory)
+        ))
         client.delete_collection(name="organic_data")
     except Exception as e:
         print(e)
