@@ -3,7 +3,7 @@ import json
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import SystemMessage
 
-from prompts import compliance_system_template, compliance_assistant_cot_prompt, compliance_assistant_prompt 
+from prompts import compliance_assistant_cot_prompt, compliance_assistant_prompt 
 from diaita.docs import query_documents
 
 # Get compliance assistant answer
