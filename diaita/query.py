@@ -5,7 +5,7 @@ from marvin import ai_fn
 from diaita.docs import query_documents
 
 def query(query, kind):
-    docs = query_documents(query, kind="summary", n_results=5)
+    docs = query_documents(query, kind="summary", n_results=10)
     if kind == "auditor":
         return query_auditor(query, docs)
     elif kind == "farmer":
@@ -14,9 +14,12 @@ def query(query, kind):
 @ai_fn
 def query_auditor(question: str, documents: Dict[str, str]) -> str:
     """
-    You are an expert in USDA organic accreditation and auditing. You are responding to a question from an expert in the field.
+    You are an expert in USDA organic accreditation and auditing.
 
-    Using the relevant documents, you should answer the question. Include the citations of the documents in your response.
+    Answer the question using the documents provided.
+
+    Include citations for propositions inline, at the end of each sentence.
+
     """
 
 @ai_fn
@@ -24,5 +27,5 @@ def query_farmer(query: str, documents: Dict[str, str]) -> str:
     """
     You are an expert in USDA organic accreditation and auditing. You are responding to a question from a farmer looking to explore USDA organic certification.
 
-    Using the relevant documents, you should answer the question. Include the citations of the documents in your response.
+    Using the relevant documents, you should answer the question. 
     """
