@@ -48,6 +48,7 @@ def answer(actor_question, chat_reasoning):
 
     # Create messages
     messages = [
+        SystemMessage(content="You are an expert in USDA Organic complaince and you are helping a company to understand the requirements."),
         HumanMessage(content=compliance_assistant_prompt.format(question=actor_question, reasoning=chat_reasoning))
     ]
 
