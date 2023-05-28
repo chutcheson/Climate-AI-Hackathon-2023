@@ -1,7 +1,7 @@
 import json
 
 from langchain.chat_models import ChatOpenAI
-from langchain.schema import SystemMessage
+from langchain.schema import SystemMessage, HumanMessage
 
 from prompts import compliance_assistant_cot_prompt, compliance_assistant_prompt 
 from diaita.docs import query_documents
@@ -32,7 +32,7 @@ def reasoning(question, documents):
     # Create messages
     messages = [
         SystemMessage(content="You are an expert in USDA Organic complaince and you are helping a company to understand the requirements."),
-        compliance_assistant_cot_prompt.format(question=question, documents=documents)
+        HumanMessage(compliance_assistant_cot_prompt.format(question=question, documents=documents))
     ]
 
     # Get the reasoning
@@ -51,7 +51,7 @@ def answer(question, reasoning):
     # Create messages
     messages = [
         SystemMessage(content="You are an expert in USDA Organic complaince and you are helping a company to understand the requirements."),
-        compliance_assistant_prompt.format(question=question, reasoning=reasoning)
+        HumanMessage(compliance_assistant_prompt.format(question=question, reasoning=reasoning))
     ]
 
     # Get the reasoning
