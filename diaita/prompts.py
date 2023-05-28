@@ -22,6 +22,8 @@ You have recieved a question from a company about USDA Organic compliance.
 
 7. Write a response to the question.
 
+Check to ensure that you have written out all of the information above.
+
 """
 
 compliance_assistant_cot_prompt = PromptTemplate(input_variables=['question', 'documents'], template=compliance_assistant_cot_template)
@@ -33,8 +35,6 @@ Question: {question}
 Reasoning: {reasoning}
 
 Write out an answer to the company's question using the reasoning.
-
-The answer should be addressed the company. 
 
 The answer should be comprehensive and include all relevant information.
 
