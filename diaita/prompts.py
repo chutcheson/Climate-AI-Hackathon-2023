@@ -44,4 +44,4 @@ Write out a response to the company's question using the reasoning.
 
 """
 
-compliance_assistant_prompt = PromptTemplate(input_variables=['query', 'reasoning'], template=compliance_assistant_template)
+compliance_assistant_prompt = PromptTemplate(input_variables=['question', 'reasoning'], template=compliance_assistant_template)
