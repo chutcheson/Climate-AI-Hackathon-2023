@@ -36,7 +36,7 @@ Question: {question}
 
 Reasoning: {reasoning}
 
-Provide an answer to the company's question using the reasoning.
+Answer to the company's question using the reasoning.
 
 The answer should be comprehensive and include all relevant information.
 
