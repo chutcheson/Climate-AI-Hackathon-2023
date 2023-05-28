@@ -1,9 +1,5 @@
 from langchain import PromptTemplate
 
-compliance_system_template = """
-You are an expert in USDA Organic complaince and you are helping a company to understand the requirements.
-"""
-
 compliance_assistant_cot_template = """
 
 Question: {question}

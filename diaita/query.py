@@ -15,6 +15,8 @@ def assistant(question, collection):
     # Consolidate the documents
     docs = "\n".join([doc[0] for idx, doc in docs])
 
+    print(docs)
+
     # Get the reasoning
     chat_reasoning = reasoning(question, docs)
 
@@ -31,7 +33,7 @@ def reasoning(question, documents):
 
     # Create messages
     messages = [
-        SystemMessage(content=compliance_system_template),
+        SystemMessage(content="You are an expert in USDA Organic complaince and you are helping a company to understand the requirements."),
         compliance_assistant_cot_prompt.format(question=question, documents=documents)
     ]
 
@@ -50,7 +52,7 @@ def answer(question, reasoning):
 
     # Create messages
     messages = [
-        SystemMessage(content=compliance_system_template),
+        SystemMessage(content="You are an expert in USDA Organic complaince and you are helping a company to understand the requirements."),
         compliance_assistant_prompt.format(question=question, reasoning=reasoning)
     ]
 
