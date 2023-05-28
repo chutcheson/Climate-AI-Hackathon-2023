@@ -6,7 +6,7 @@ You are an expert in USDA Organic complaince and you are helping a company to un
 
 compliance_assistant_cot_template = """
 
-Question: {query}
+Question: {question}
 
 Documents: {documents}
 
