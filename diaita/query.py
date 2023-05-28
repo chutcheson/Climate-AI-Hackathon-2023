@@ -35,6 +35,8 @@ def reasoning(question, documents):
     # Get the reasoning
     res = chat(messages).content
 
+    print(res)
+
     return res
 
 # Get answer
@@ -51,5 +53,7 @@ def answer(question, reasoning):
 
     # Get the reasoning
     res = chat(messages).content
+
+    print(res)
 
     return res
