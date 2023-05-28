@@ -12,7 +12,9 @@ setup(
         'marvin',
         'openai',
         'pandas',
-        'chromadb'
+        'chromadb',
+        'streamlit',
+        'streamlit-chat'
     ],
 )
 
