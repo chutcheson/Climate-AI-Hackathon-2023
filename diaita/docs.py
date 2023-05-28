@@ -2,8 +2,7 @@ from marvin import ai_fn
 
 from diaita.load import load_collection 
 
-def query_documents(text, kind, n_results):
-    collection = load_collection()
+def query_documents(text, col, kind, n_results):
     res = collection.query(query_texts=[text], where={"kind":kind}, n_results=n_results)
     metadata = res['metadatas'][0]
     docs = res['documents'][0]
