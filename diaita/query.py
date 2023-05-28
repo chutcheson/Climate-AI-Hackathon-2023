@@ -12,6 +12,9 @@ def assistant(question, collection):
     # Get the related documents
     docs = query_documents(question, collection, "regulation", n_results=2)
 
+    # Consolidate the documents
+    docs = "\n".join([doc[0] for idx, doc in docs])
+
     # Get the reasoning
     chat_reasoning = reasoning(question, docs)
 
