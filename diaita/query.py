@@ -10,7 +10,7 @@ from diaita.docs import query_documents
 def assistant(question, collection):
 
     # Get the related documents
-    docs = query_documents(query, collection, kind, n_results=2)
+    docs = query_documents(question, collection, kind, n_results=2)
 
     # Get the reasoning
     reasoning = reasoning(question, docs)
