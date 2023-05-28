@@ -38,7 +38,9 @@ Write out an answer to the company's question using the reasoning.
 
 The answer should be comprehensive and include all relevant information.
 
-The answer should be easy to read.
+The answer should be written in a way that is easy to understand.
+
+The answer should be written in the style of a chat conversation.
 
 """
 
