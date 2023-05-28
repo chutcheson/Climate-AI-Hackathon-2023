@@ -13,12 +13,12 @@ def assistant(question, collection):
     docs = query_documents(question, collection, "regulation", n_results=2)
 
     # Get the reasoning
-    reasoning = reasoning(question, docs)
+    chat_reasoning = reasoning(question, docs)
 
     # Extract the answer
-    answer = answer(question, reasoning)
+    chat_answer = answer(question, chat_reasoning)
 
-    return answer
+    return chat_answer
 
 # Get reasoning
 def reasoning(question, documents):
