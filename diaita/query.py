@@ -13,7 +13,7 @@ def assistant(question, collection):
     docs = query_documents(question, collection, "regulation", n_results=2)
 
     # Consolidate the documents
-    docs = "\n".join([doc[0] for idx, doc in docs])
+    docs = "\n".join([doc[1] for idx, doc in docs])
 
     print(docs)
 
