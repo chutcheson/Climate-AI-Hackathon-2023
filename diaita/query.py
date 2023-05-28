@@ -24,19 +24,15 @@ def assistant(question, collection):
     return chat_answer
 
 # Get reasoning
-def reasoning(question, documents):
+def reasoning(actor_question, query_documents):
 
-    print(question)
-
-    print(documents)
-    
     # Instantiate the chat model 
     chat = ChatOpenAI()
 
     # Create messages
     messages = [
         SystemMessage(content="You are an expert in USDA Organic complaince and you are helping a company to understand the requirements."),
-        HumanMessage(content=compliance_assistant_cot_prompt.format(question=question, documents=documents))
+        HumanMessage(content=compliance_assistant_cot_prompt.format(question=actor_question, documents=query_documents))
     ]
 
     # Get the reasoning
