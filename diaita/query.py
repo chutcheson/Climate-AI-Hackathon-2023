@@ -9,21 +9,11 @@ from diaita.docs import query_documents
 # Get compliance assistant answer
 def assistant(question, collection):
 
-    print(question)
-
     # Get the related documents
     docs = query_documents(question, collection, "regulation", n_results=2)
 
-    print(docs)
-
-    for doc in docs:
-
-        print(doc)
-
     # Consolidate the documents
-    docs = "\n".join([doc[1] for idx, doc in docs])
-
-    print(docs)
+    docs = "\n".join([doc for idx, doc in docs])
 
     # Get the reasoning
     chat_reasoning = reasoning(question, docs)
