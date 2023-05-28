@@ -5,7 +5,7 @@ from marvin import ai_fn
 from diaita.docs import query_documents
 
 def query(query, col, actor='farmer', kind='regulation'):
-    docs = query_documents(query, col, kind=kind, n_results=2)
+    docs = query_documents(query, col, kind, n_results=2)
     if actor == "auditor":
         return query_auditor(query, docs)
     elif actor == "farmer":
