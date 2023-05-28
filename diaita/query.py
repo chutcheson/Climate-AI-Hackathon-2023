@@ -1,30 +1,55 @@
-from typing import Dict, List
+import json
 
-from marvin import ai_fn
+from langchain.chat_models import ChatOpenAI
+from langchain.schema import SystemMessage
 
+from prompts import compliance_system_template, compliance_assistant_cot_prompt, compliance_assistant_prompt 
 from diaita.docs import query_documents
 
-def query(query, col, actor='farmer', kind='regulation'):
-    docs = query_documents(query, col, kind, n_results=2)
-    if actor == "auditor":
-        return query_auditor(query, docs)
-    elif actor == "farmer":
-        return query_farmer(query, docs)
+# Get compliance assistant answer
+def assistant(question, collection):
 
-@ai_fn
-def query_auditor(question: str, documents: Dict[str, str]) -> str:
-    """
-    You are an expert in USDA organic accreditation and auditing.
+    # Get the related documents
+    docs = query_documents(query, collection, kind, n_results=2)
 
-    Answer the question. You may use the provided documents for context.
+    # Get the reasoning
+    reasoning = reasoning(question, docs)
 
-    At end of the response, include a list of useful citations.
-    """
+    # Extract the answer
+    answer = answer(question, reasoning)
 
-@ai_fn
-def query_farmer(query: str, documents: Dict[str, str]) -> str:
-    """
-    You are an expert in USDA organic accreditation and auditing. You are responding to a question from a farmer looking to explore USDA organic certification.
+    return answer
 
-    Answer the question, You may use the provided documents for context.
-    """
+# Get reasoning
+def reasoning(question, documents):
+    
+    # Instantiate the chat model 
+    chat = ChatOpenAI()
+
+    # Create messages
+    messages = [
+        SystemMessage(content=compliance_system_template)
+        compliance_assistant_cot_prompt.format(question=question, documents=documents)
+    ]
+
+    # Get the reasoning
+    res = chat(messages).content
+
+    return res
+
+# Get answer
+def answer(question, reasoning):
+
+    # Instantiate the chat model 
+    chat = ChatOpenAI()
+
+    # Create messages
+    messages = [
+        SystemMessage(content=compliance_system_template)
+        compliance_assistant_prompt.format(question=question, reasoning=reasoning)
+    ]
+
+    # Get the reasoning
+    res = chat(messages).content
+
+    return res
