@@ -1,5 +1,3 @@
-from marvin import ai_fn
-
 from diaita.load import load_collection 
 
 def query_documents(text, col, kind, n_results):
