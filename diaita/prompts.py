@@ -18,9 +18,11 @@ You have recieved a question from a company about USDA Organic compliance.
 
 5. Brainstorm which parts of the documents might be relevant to the question and write them down. 2-3 sentences.
 
-6. Brainstorm possible answers to the question, using the documents and write them down. 4-5 sentences.
+6. Brainstorm possible ways that the answer might differ depending on the company's situation and write them down. 2-3 sentences.
 
-7. Write a response to the question.
+7. Brainstorm possible answers to the question, using the documents and write them down. 4-5 sentences.
+
+8. Write a response to the question.
 
 Check to ensure that you have written out all of the information above.
 
