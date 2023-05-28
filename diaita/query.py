@@ -16,6 +16,10 @@ def assistant(question, collection):
 
     print(docs)
 
+    for doc in docs:
+
+        print(doc)
+
     # Consolidate the documents
     docs = "\n".join([doc[1] for idx, doc in docs])
 
