@@ -55,6 +55,4 @@ def answer(actor_question, chat_reasoning):
     # Get the reasoning
     res = chat(messages).content
 
-    print(res)
-
     return res
