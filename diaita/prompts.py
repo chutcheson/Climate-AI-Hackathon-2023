@@ -32,11 +32,11 @@ Then write out a response to the company's question.
 
 """
 
-compliance_assistant_cot_prompt = PromptTemplate(input_variables=['query', 'reasoning'], template=compliance_assistant_cot_template)
+compliance_assistant_cot_prompt = PromptTemplate(input_variables=['question', 'documents'], template=compliance_assistant_cot_template)
 
 compliance_assistant_template = """
 
-Question: {query}
+Question: {question}
 
 Reasoning: {reasoning}
 
