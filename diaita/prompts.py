@@ -8,23 +8,19 @@ Documents: {documents}
 
 You have recieved a question from a company about USDA Organic compliance. 
 
-Identify the parts of the question and interpret them. Write out the parts and your interpretation.
+1. Write out the parts of the question.
 
-Identify any facts that the company provides about its situation and interpret them. Write out the facts and your interpretation.
+2. Write out an interpretation of each part of the question.
 
-Brainstorm the reasons why the company might be asking this question. Write out your ideas.
+3. Write out the facts that the company provides about its situation and interpret them.
 
-Brainstorm which parts of the documents might be relevant to the question. Write out your ideas.
+4. Brainstorm the reasons why the company might be asking this question and write them down. 2-3 sentences.
 
-Brainstorm possible answers to the question, using the documents. Write out your ideas.
+5. Brainstorm which parts of the documents might be relevant to the question and write them down. 2-3 sentences.
 
-For each brainstormed topic, write at least 4 sentences about the topic.
+6. Brainstorm possible answers to the question, using the documents and write them down. 4-5 sentences.
 
-Mark out your final response with "Response" and write out your response.
-
-The response should provide an answer to the question.
-
-The response should be comprehensive and address all parts of the question.
+7. Write a response to the question.
 
 """
 
@@ -36,7 +32,13 @@ Question: {question}
 
 Reasoning: {reasoning}
 
-Write out a response to the company's question using the reasoning.
+Write out an answer to the company's question using the reasoning.
+
+The answer should be addressed the company. 
+
+The answer should be comprehensive and include all relevant information.
+
+The answer should be easy to read.
 
 """
 
