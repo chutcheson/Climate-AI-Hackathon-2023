@@ -32,7 +32,7 @@ def reasoning(question, documents):
     # Create messages
     messages = [
         SystemMessage(content="You are an expert in USDA Organic complaince and you are helping a company to understand the requirements."),
-        HumanMessage(compliance_assistant_cot_prompt.format(question=question, documents=documents))
+        HumanMessage(content=compliance_assistant_cot_prompt.format(question=question, documents=documents))
     ]
 
     # Get the reasoning
@@ -51,7 +51,7 @@ def answer(question, reasoning):
     # Create messages
     messages = [
         SystemMessage(content="You are an expert in USDA Organic complaince and you are helping a company to understand the requirements."),
-        HumanMessage(compliance_assistant_prompt.format(question=question, reasoning=reasoning))
+        HumanMessage(content=compliance_assistant_prompt.format(question=question, reasoning=reasoning))
     ]
 
     # Get the reasoning
