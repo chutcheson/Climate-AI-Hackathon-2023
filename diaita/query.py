@@ -25,6 +25,10 @@ def assistant(question, collection):
 
 # Get reasoning
 def reasoning(question, documents):
+
+    print(question)
+
+    print(documents)
     
     # Instantiate the chat model 
     chat = ChatOpenAI()
